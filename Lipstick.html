@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!-- This tells the browser we're writing HTML5 -->
+
+<html>
+<head>
+  <title>PinkPout Lipsticks</title> <!-- This appears on the browser tab -->
+
+  <style>
+    /* Styling the body of the page */
+    body {
+      background: linear-gradient(to bottom, #f9d5d3, #f7a8a5, #f06f6b); /* Soft pink background */
+      font-family: Arial, sans-serif; /* Clean font */
+      max-width: 900px; /* Page won't stretch too wide */
+      margin: auto; /* Center the page */
+      padding: 30px;
+      color: black;
+      display: flex; /* Puts main and cart side by side */
+      gap: 40px; /* Space between them */
+    }
+
+    /* Main product area */
+    .main {
+      flex: 2; /* Takes up more space than cart */
+    }
+
+    /* Shopping cart area */
+    .cart {
+      flex: 1;
+      background: #fff9f9;
+      padding: 15px 20px;
+      border-radius: 15px;
+      min-width: 250px;
+      position: sticky; /* Stays visible while scrolling */
+      top: 30px;
+      font-weight: bold;
+    }
+
+    .cart h2 {
+      text-align: center;
+      font-family: cursive;
+      color: #ff597b;
+      margin-top: 0;
+    }
+
+    .cart-items {
+      margin-bottom: 15px;
+      max-height: 300px;
+      overflow-y: auto; /* Scroll if too many items */
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .controls button {
+      padding: 3px 8px;
+      font-size: 14px;
+    }
+
+    .total {
+      font-size: 20px;
+      text-align: center;
+      border-top: 2px solid #ff597b;
+      padding-top: 10px;
+      margin-top: 15px;
+    }
+
+    .checkout {
+      background: #ff597b;
+      border: none;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    /* Header section */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 36px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: black;
+    }
+
+    .heart {
+      width: 24px;
+      height: 24px;
+      background-color: black;
+      clip-path: polygon(
+        50% 15%, 61% 9%, 70% 10%, 75% 16%, 75% 25%, 50% 65%, 
+        25% 25%, 25% 15%, 30% 10%, 39% 9%
+      );
+    }
+
+    /* Lipstick design */
+    .lipstick {
+      width: 60px;
+      height: 150px;
+      background: white;
+      border-radius: 20px;
+      border: 2px solid pink;
+      position: relative;
+    }
+
+    .lip-color {
+      position: absolute;
+      bottom: 20px;
+      left: 8px;
+      width: 45px;
+      height: 90px;
+      background: linear-gradient(to bottom, #e2b8b5, #d28a89, #c86463);
+      border-radius: 25px 25px 15px 15px;
+      opacity: 0.9;
+    }
+
+    /* Description text */
+    .description {
+      max-width: 450px;
+      margin-bottom: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      color: black;
+    }
+
+    /* Grid layout for shades */
+    .shades {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      gap: 25px;
+    }
+
+    .shade {
+      background: #ffe6eb;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+      color: black;
+      box-shadow: 0 0 5px #ff8aa1;
+    }
+
+    .shade-img {
+      width: 150px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 2px solid pink;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    button {
+      background-color: #ff597b;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e04866;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Main content: logo, lipstick, description, shades -->
+  <div class="main">
+    <div class="header">
+      <div class="logo">PinkPout <div class="heart"></div></div>
+      <div class="lipstick"><div class="lip-color"></div></div>
+    </div>
+
+    <div class="description">
+      PinkPout is made just for women, to give you confidence every time you wear it. Crafted with love, our lipsticks are designed to make you feel beautiful and special.
+    </div>
+
+    <div class="shades">
+      <div class="shade" data-name="Shade 1" data-price="500">
+        <img class="shade-img" src="images/shade1.jpg" alt="Shade 1">
+        <div class="price">MRP: ₹500</div>
+        <div class="btns">
+          <button class="add">Add to Cart</button>
+          <button class="buy">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="shade" data-name="Shade 2" data-price="350">
+        <img class="shade-img" src="images/shade2.jpg" alt="Shade 2">
+        <div class="price">MRP: ₹350</div>
+        <div class="btns">
+          <button class="add">Add to Cart</button>
+          <button class="buy">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="shade" data-name="Shade 3" data-price="890">
+        <img class="shade-img" src="images/shade3.jpg" alt="Shade 3">
+        <div class="price">MRP: ₹890</div>
+        <div class="btns">
+          <button class="add">Add to Cart</button>
+          <button class="buy">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="shade" data-name="Shade 4" data-price="670">
+        <img class="shade-img" src="images/shade4.jpg" alt="Shade 4">
+        <div class="price">MRP: ₹670</div>
+        <div class="btns">
+          <button class="add">Add to Cart</button>
+          <button class="buy">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart area on the right -->
+  <div class="cart">
+    <h2>Cart</h2>
+    <div class="cart-items"></div>
+    <div class="total">Total: ₹0</div>
+    <button class="checkout">Checkout</button>
+  </div>
+
+  <!-- JavaScript part: adding, removing, buying -->
+  <script>
+    const cartItems = document.querySelector('.cart-items');
+    const totalElem = document.querySelector('.total');
+    const checkoutBtn = document.querySelector('.checkout');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function updateCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          ${item.name} x${item.quantity}
+          <div class="controls">
+            <button onclick="changeQty(${index}, -1)">-</button>
+            <button onclick="changeQty(${index}, 1)">+</button>
+            <button onclick="removeItem(${index})">x</button>
+            <span>₹${item.price * item.quantity}</span>
+          </div>`;
+        cartItems.appendChild(div);
+        total += item.price * item.quantity;
+      });
+      totalElem.textContent = `Total: ₹${total}`;
+      saveCart();
+    }
+
+    function changeQty(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    document.querySelectorAll('.add').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const shade = e.target.closest('.shade');
+        const name = shade.dataset.name;
+        const price = Number(shade.dataset.price);
+        let found = cart.find(i => i.name === name);
+        if (found) {
+          found.quantity++;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+        updateCart();
+      });
+    });
+
+    document.querySelectorAll('.buy').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const shade = e.target.closest('.shade');
+        const name = shade.dataset.name;
+        const price = Number(shade.dataset.price);
+        alert(`You bought ${name} for ₹${price}. Thank you!`);
+      });
+    });
+
+    checkoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) return alert('Your cart is empty!');
+      let summary = cart.map(i => `${i.name} x${i.quantity} = ₹${i.price * i.quantity}`).join('\n');
+      alert(`Order Summary:\n${summary}\n\nTotal: ₹${cart.reduce((t, i) => t + i.price * i.quantity, 0)}\n\nThank you for shopping with PinkPout!`);
+      cart = [];
+      updateCart();
+    });
+
+    updateCart(); // Initial cart load
+  </script>
+
+</body>
+</html>
